@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>tetris</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="overall_container">
+        <div class="stage_container" data-container>
+        </div>
+        <div class="side_container">
+            <span class="label">Next:</span>
+            <div class="next_item" data-next>
+            </div>
+            
+            <div class="score_container">
+                <span class="label">Score:</span>
+                <div class="numeric" data-score>
+                    0
+                </div>
+                
+                <span class="label">Level:</span>
+                <div class="numeric" data-level>
+                    1
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/engine/dispatcher.js"></script>
+    <script src="scripts/engine/collisions.js"></script>
+    <script src="scripts/engine/matrix.js"></script>
+    <script src="scripts/engine/renderer.js"></script>
+    <script src="scripts/engine/bricks.js"></script>
+    <script src="scripts/engine/collisions.js"></script>
+    <script src="scripts/engine/transformer.js"></script>
+    <script src="scripts/engine/moves.js"></script>
+    <script src="scripts/engine/line.js"></script>
+    <script src="scripts/engine/position.js"></script>
+    <script src="scripts/engine/score.js"></script>
+    
+    <script src="scripts/next.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

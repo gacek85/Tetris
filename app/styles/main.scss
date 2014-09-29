@@ -1,0 +1,71 @@
+$color : #666;
+$border : 1px solid $color;
+$shadowColor : #efefef;
+$brickBgColor: #ddd;
+
+.overall_container {
+    background-color: #DFCCDF;
+    padding: 20px;
+    overflow: hidden;
+    float: left;
+    font-family: sans, sans-serif;
+    color: $color;
+    text-shadow: 0 1px 0 $shadowColor;
+    font-size: 11px;
+    border : $border;
+    
+    .side_container {
+        margin-left: 20px;
+        float: left;
+        
+        .label {
+            display: block;
+            padding: 0;
+            margin-bottom: 5px;
+            text-align: center
+        }
+    }
+    
+    
+        
+    & .stage_container, & .next_item {
+        background-color: $shadowColor;
+        overflow: hidden;
+        float: left;
+        padding: 0 0 2px 2px;
+        border: $border;
+    }
+    
+    .score_container {
+        padding-top: 20px;
+        clear: both;
+        
+        .numeric {
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    
+    & .stage_container .column,
+    & .next_item .column {
+        overflow: hidden;
+        float: left;
+        margin-right: 2px;
+        
+        .block {
+            width: 11px;
+            height: 11px;
+            margin-top: 2px;
+            
+            &.off {
+                background-color: $brickBgColor;
+            }
+            
+            &.on {
+                background-color: $color;
+            }
+        }
+    }
+}
