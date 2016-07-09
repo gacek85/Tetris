@@ -5,19 +5,40 @@ var BrickGame = BrickGame || {};
     
     // Stage setup...
     
-    var $target = $('[data-container]');
-    var width = 16;
-    var height = 30;
-    
-    // The event dispatcher is the central point of the application
-    var eventDispatcher = BrickGame.EventDispatcher.getInstance();
-    var matrixCreator = BrickGame.MatrixCreator.getInstance();
-    var renderer = new BrickGame
-            .StageRenderer($target.get(0), {
-                width : width,
-                height : height
-            })
+    var $target = $('[data-container]'),
+        width = 16,
+        height = 30,
+        // The event dispatcher is the central point of the application
+        eventDispatcher = BrickGame.EventDispatcher.getInstance(),
+        matrixCreator = BrickGame.MatrixCreator.getInstance(),
+        renderer = new BrickGame.StageRenderer($target.get(0), {
+            width : width,
+            height : height
+        }),
+        speeds = [
+            {level: 1, speed : 1000, range : {from: 0, to: 499}},
+            {level: 2, speed : 800, range : {from: 500, to: 999}},
+            {level: 3, speed : 600, range : {from: 1000, to: 1999}},
+            {level: 4, speed : 400, range : {from: 2000, to: 3999}},
+            {level: 5, speed : 300, range : {from: 4000, to: 5999}},
+            {level: 6, speed : 200, range : {from: 6000, to: 7999}},
+            {level: 7, speed : 150, range : {from: 8000, to: 8999}},
+            {level: 8, speed : 100, range : {from: 9000, to: 9999}},
+            {level: 9, speed : 20, range : {from: 10000, to: Infinity}}
+        ],
+        speedManager = new BrickGame.SpeedManager(eventDispatcher);
     ;
+    
+    for (var t in speeds) {
+        var speedInput = speeds[t],
+            speedProvider = new BrickGame.SpeedProvider(
+                                            speedInput.range, 
+                                            speedInput.speed, 
+                                            speedInput.level
+            );
+            speedManager.addSpeedProvider(speedProvider);
+        ;
+    }
     
     renderer
             .setMatrixCreator(matrixCreator)
@@ -62,48 +83,12 @@ var BrickGame = BrickGame || {};
     });
     
     var $levelTarget = $('[data-level]');
-    eventDispatcher.addEventListener('score_changed', function (event) {
-        var score = event.getData().score;
-        var speed,
-            level;
-        switch(true) {
-            case (score < 500):
-                speed = 1000;
-                level = 1;
-                break;
-            case (score < 1000):
-                speed = 800;
-                level = 2;
-                break;
-            case (score < 2000):
-                speed = 600;
-                level = 3;
-                break;
-            case (score < 4000):
-                speed = 400;
-                level = 4;
-                break;
-            case (score < 6000):
-                speed = 300;
-                level = 5;
-                break;
-            case (score < 8000):
-                speed = 200;
-                level = 6;
-                break;
-            case (score < 9000):
-                speed = 1500;
-                level = 7;
-                break;
-            case (score < 10000):
-                speed = 100;
-                level = 8;
-                break;
-            default:
-                speed = 20;
-                level = 9;
-                break;
-        }
+    eventDispatcher.addEventListener('level_updated', function (event) {
+        var data = event.getData(),
+            speed = data.speed,
+            level = data.level
+        ;
+        
         
         if ($levelTarget.text() !== String(level)) {
             $levelTarget.text(level); // Only update the speed if the level changes

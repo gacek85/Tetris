@@ -1,4 +1,5 @@
-# JavaScript Tetris
+JavaScript Tetris
+====
 
 This is a simple JavaScript implementation of popular brick game Tetris. The structure
 of the app is flexible, contains several lossly coupled and reuseable components:
@@ -8,4 +9,7 @@ of the app is flexible, contains several lossly coupled and reuseable components
 - Event Dispatcher (Simple but useable) - the central point of the application
 
 
-The app contains pretty ugly CSS, but it does the job.
+The main file and the renderer is currently based on jQuery, but the renderer component may easily be replaced by any other renderer.
+
+
+The app contains pretty ugly styling, but it does the job.
