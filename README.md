@@ -13,3 +13,11 @@ The main file and the renderer is currently based on jQuery, but the renderer co
 
 
 The app contains pretty ugly styling, but it does the job.
+
+Usage
+---
+
+Type `grunt serve` to open the app in a browser window.
+
+
+![Tetris!](/app/images/screen1.jpg Tetris!)
