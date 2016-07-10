@@ -20,4 +20,4 @@ Usage
 Type `grunt serve` to open the app in a browser window.
 
 
-![Tetris!](/app/images/screen1.jpg Tetris!)
+![Tetris!](https://raw.github.com/gacek85/Tetris/develop/app/images/screen1.jpg)
